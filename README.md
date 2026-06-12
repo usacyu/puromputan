@@ -1,177 +1,178 @@
 <div align="center">
 
-# 🎀 ぷろんぷたん
+# 🎀 Puromputan
 
-**AIチャットの "情景" を、そのまま絵に。**
+**Turn your AI chat's scenes into pictures, as you talk.**
 
-AIの返事からプロンプトを自動でキャッチして、Stable Diffusion / Forge で即生成するブリッジツール
+A bridge tool that auto-catches image prompts from AI replies and generates them instantly with Stable Diffusion / Forge
 
 <img src="https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white" alt="Python">
 <img src="https://img.shields.io/badge/GUI-CustomTkinter-9b6bd6" alt="CustomTkinter">
 <img src="https://img.shields.io/badge/OS-Windows-0078D6?logo=windows&logoColor=white" alt="Windows">
-<img src="https://img.shields.io/badge/SD%20WebUI%20%2F%20Forge-対応-67b26f" alt="SD WebUI / Forge">
-<img src="https://img.shields.io/badge/License-%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84%E3%82%92%E3%81%BF%E3%81%A6%E3%81%AD-lightgrey" alt="License">
+<img src="https://img.shields.io/badge/SD%20WebUI%20%2F%20Forge-supported-67b26f" alt="SD WebUI / Forge">
+<img src="https://img.shields.io/badge/License-see%20Terms-lightgrey" alt="License">
 <img src="https://img.shields.io/badge/made%20with-%F0%9F%8E%80-e85d9a" alt="made with ribbon">
 
-**日本語** ｜ [English](README_EN.md)
+[日本語](README_JA.md) ｜ **English**
 
-[📖 マニュアル（日本語）](MANUAL_JA.md) ｜ [📖 Manual (English)](MANUAL_EN.md)
+[📖 Manual (English)](MANUAL_EN.md) ｜ [📖 マニュアル（日本語）](MANUAL_JA.md)
 
 </div>
 
 ---
 
-## ✨ ぷろんぷたんとは
+## ✨ What is Puromputan?
 
-AIとおしゃべりしていると「いまの場面、絵で見たい！」って瞬間があるよね。
-**ぷろんぷたん**は、AIがマーカー付きで出力した画像生成プロンプトをブラウザから自動でキャッチして、
-ローカルの Stable Diffusion WebUI / Forge にそのまま流し込むツールだよ。
+When you're chatting with an AI, there's always that moment — *"I want to see this scene as a picture!"*
+**Puromputan** auto-catches the image prompts your AI writes with special markers, and sends them straight to your local Stable Diffusion WebUI / Forge.
 
-チャットを続けているだけで、横のウィンドウに絵が届く。それがぷろんぷたん。🐱
+Just keep chatting, and pictures arrive in the window next to you. That's Puromputan. 🐱
 
-<div align="center">
-<img src="docs/img/architecture.svg" width="860" alt="ぷろんぷたんの仕組み">
-</div>
-
-## 🖥 画面
-
-受信したプロンプト・生成された絵・履歴カルーセルがひと目で見渡せるよ。
+> By the way, the name is *prompt* + **-tan** — a Japanese suffix of endearment. Yes, she's lovingly made in Japan 🎀
 
 <div align="center">
-<img src="docs/img/screenshot_main.png" width="860" alt="ぷろんぷたんのメイン画面">
+<img src="docs/img/architecture_en.svg" width="860" alt="How Puromputan works">
 </div>
 
-## 🖼 サンプルギャラリー
+## 🖥 Screen
 
-ぷろんぷたん経由で生成した絵だよ（モデル：NoobAI系）。
+Received prompts, the generated picture, and the history carousel — all at a glance.
+
+<div align="center">
+<img src="docs/img/screenshot_main.png" width="860" alt="Puromputan main window">
+</div>
+
+## 🖼 Sample Gallery
+
+All generated through Puromputan (model: NoobAI family).
 
 | | | |
 |:---:|:---:|:---:|
 | <img src="docs/img/sample_girl_sunflower.png" width="260"> | <img src="docs/img/sample_redpanda_autumn.png" width="260"> | <img src="docs/img/sample_bird_sakura.png" width="260"> |
-| ひまわり畑と麦わら帽子 | 秋のレッサーパンダ | 桜の枝の小鳥 |
+| Sunflower field & straw hat | Autumn red panda | Little bird on a sakura branch |
 | <img src="docs/img/sample_cat_window.png" width="260"> | <img src="docs/img/sample_cat_white.png" width="260"> | <img src="docs/img/sample_shiba_sunflower.png" width="260"> |
-| 窓辺でまどろむ猫 | 窓辺の白ねこ | ひまわりと柴犬 |
+| Cat dozing by the window | White cat on a windowsill | Shiba & sunflowers |
 
 ## 🆕 What's New!
 
 - **2026/06/11**
-  - ✍️ **手動入力での生成**に対応！欄に直接書いても、受信したプロンプトを「ちょい直し」してもOK
-  - 💡 ランプ全面刷新：ピルが `待機中 → 受信完了 → 生成済み` と進む・生成中チップはふわふわ明滅・ミニランプは受信でペカーっと点滅
-  - 🪄 **Forgeプロンプト自動入力**（forge_sync v1.3）：受信したプロンプトがForgeのUIにも自動で入る
+  - ✍️ **Manual input** — type directly into the fields, or tweak a received prompt before generating
+  - 💡 Lamp overhaul: pills now flow `Waiting → Received → Generated`, the busy chip pulses while generating, and mini lamps blink brightly on arrival
+  - 🪄 **Forge prompt auto-fill** (forge_sync v1.3): received prompts are filled into the Forge UI automatically
 - **2026/06/10**
-  - 📌 ミニモード刷新：ポラロイド風の常時最前面ウィンドウに。位置とサイズも記憶
+  - 📌 Mini mode reworked: polaroid-style always-on-top window that remembers its position and size
 - **2026/06/09**
-  - 🎀 UIフルリデザイン：Lucideアイコン・履歴カルーセル・上品カワイイ配色
+  - 🎀 Full UI redesign: Lucide icons, history carousel, elegant-cute color scheme
 
-## 🌟 主な機能
+## 🌟 Features
 
-| 機能 | 説明 |
+| Feature | Description |
 |---|---|
-| 📡 自動受信 | ブラウザのユーザースクリプトが 🔴ポジ🟥 / 🔵ネガ🟦 マーカーを検知して自動送信 |
-| ⚡ 自動 / 確認モード | 届いたら即生成 or 内容を見てから生成ボタンで |
-| ✍️ 手動入力 | 欄に直接入力・受信したプロンプトの手直しもそのまま生成に反映 |
-| 🌶 ポジスパイス | ワンタッチで足せる追い味プロンプト×9スロット（生成時に内部合成） |
-| 🛡 ネガ補強 | 手・指・足の破綻対策テンプレをスイッチひとつで追記 |
-| 💎 クオリティプリセット | 爆速 / 通常 / 高品質 / Forge同期値 を切り替え |
-| 🖼 プレビュー＆履歴 | S/M/L/Hide切替・履歴カルーセル・生成済みは自動でピンク枠選択 |
-| 📌 ミニモード | ポラロイド風・常時最前面。チャットしながら絵を眺めるための"本体" |
-| 🙈 Hide | プレビューも履歴もファイル名もまとめて非表示（とっさのプライバシー） |
-| 🪄 Forge連携 | 生成設定の同期＆ForgeのPrompt欄への自動入力（任意） |
-| 🌐 日英切替 | UIは日本語 / English 対応 |
+| 📡 Auto receive | A browser userscript detects 🔴pos🟥 / 🔵neg🟦 markers and sends them automatically |
+| ⚡ Auto / Manual mode | Generate the moment a prompt arrives, or review it and press the button yourself |
+| ✍️ Manual input | Type into the fields directly — edits to received prompts are used as-is |
+| 🌶 Pos spices | Nine one-touch "extra flavor" prompt slots, merged in at generation time |
+| 🛡 Neg boost | One switch appends an anti-artifact template (hands, fingers, feet) to the negative |
+| 💎 Quality presets | Fast / Normal / High Quality / Forge-synced values |
+| 🖼 Preview & history | S/M/L/Hide sizes, history carousel, the newest picture is auto-selected with a pink frame |
+| 📌 Mini mode | Polaroid-style, always on top — the "real" way to enjoy pictures while chatting |
+| 🙈 Hide | Hides the preview, history and filename all at once (quick privacy) |
+| 🪄 Forge link | Sync generation settings & auto-fill prompts into the Forge UI (optional) |
+| 🌐 JP / EN | The UI speaks both Japanese and English |
 
-## 💻 動作環境
+## 💻 Requirements
 
-| 項目 | 内容 |
+| Item | Details |
 |---|---|
 | OS | Windows 10 / 11 |
-| Python | 3.11以上 |
-| 画像生成 | Stable Diffusion WebUI（AUTOMATIC1111）または Forge（`--api` 起動） |
-| ブラウザ | Tampermonkey が入ればOK（Chrome / Edge / Firefox …） |
-| 対応チャット | Claude / ChatGPT / Gemini / Grok / Copilot / OpenWebUI など※ |
+| Python | 3.11+ |
+| Image generation | Stable Diffusion WebUI (AUTOMATIC1111) or Forge, launched with `--api` |
+| Browser | Anything that runs Tampermonkey (Chrome / Edge / Firefox …) |
+| Supported chats | Claude / ChatGPT / Gemini / Grok / Copilot / OpenWebUI and more* |
 
-※ OpenWebUI などローカルのチャットUIは、`sd_monitor.user.js` の `@match` に自分のURLを1行追加すれば使えるよ。
+\* For local chat UIs like OpenWebUI, add your own URL to the `@match` lines in `sd_monitor.user.js`.
 
-## 🚀 セットアップ
+## 🚀 Setup
 
 ```bash
-# 1. 依存ライブラリを入れる
+# 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. SD WebUI / Forge を API付きで起動しておく
-#    （起動オプションに --api を追加するだけ）
+# 2. Launch SD WebUI / Forge with the API enabled
+#    (just add --api to its launch options)
 
-# 3. ぷろんぷたんを起動！
-python app.py        # または start.bat
+# 3. Start Puromputan!
+python app.py        # or the start.bat launcher
 ```
 
-**ブラウザ側（最初の1回だけ）**
+**Browser side (one-time)**
 
-1. ブラウザに [Tampermonkey](https://www.tampermonkey.net/) を入れる
-2. `sd_monitor.user.js` を登録 → チャット画面のプロンプトを自動検知して送信
-3. （任意）`forge_sync.user.js` を登録 → Forgeの設定同期＆プロンプト自動入力
+1. Install [Tampermonkey](https://www.tampermonkey.net/)
+2. Register `sd_monitor.user.js` → auto-detects and sends prompts from chat pages
+3. (Optional) Register `forge_sync.user.js` → Forge settings sync & prompt auto-fill
 
-**AI側（最初の1回だけ）**
+**AI side (one-time)**
 
-`AIへのお約束.txt` の内容をAIに教えてね。AIがこんな形でプロンプトを出してくれるようになったら準備完了：
+Teach your AI the contents of `AIへのお約束.txt` (the Rules — copy them with the 📋 Rules button). Once the AI replies like this, you're ready:
 
 ```
 🔴 1girl, sunflower field, straw hat, smile, blue sky 🟥
 🔵 blurry, low quality, bad anatomy 🟦
 ```
 
-あとはチャットするだけ。マーカー付きの出力が来るたび、ぷろんぷたんに絵が届くよ🎀
+Then just chat. Every marked reply becomes a picture. 🎀
 
-## 💎 クオリティプリセット
+## 💎 Quality Presets
 
-| プリセット | 用途 |
+| Preset | Use case |
 |---|---|
-| ⚡ 爆速 | とにかく数を見たいとき（ステップ少なめ） |
-| ✨ 通常 | ふだん使いのバランス |
-| 💠 高品質 | ここぞの一枚 |
-| 🔄 Forge同期値 | ForgeのUIで設定した値をそのまま使う |
+| ⚡ Fast | When you want lots of pictures quickly (fewer steps) |
+| ✨ Normal | Everyday balance |
+| 💠 High Quality | For that special one |
+| 🔄 Forge Sync | Use exactly the values set in the Forge UI |
 
-## 📌 ミニモード
+## 📌 Mini Mode
 
-右上の **Mini** ボタンで、ポラロイド風の小窓に変身。
+Press the **Mini** button (top-right) to transform into a small polaroid-style window.
 
 <div align="center">
-<img src="docs/img/screenshot_mini.png" width="280" alt="ミニモード（ポラロイド風）">
+<img src="docs/img/screenshot_mini.png" width="280" alt="Mini mode (polaroid style)">
 </div>
 
-- 常に最前面・絵が主役（余計なUIは全部隠れる）
-- 下のランプで状態がわかる：**P / N**（受信でペカーっと点滅→生成済みで薄く）・**GEN**（橙の明滅=生成中→緑=完了）
-- 窓の位置とサイズは記憶されるから、次回も同じ場所に
+- Always on top, picture first (all extra UI hides away)
+- The lamps tell you what's happening: **P / N** (blink brightly on arrival → fade once generated) and **GEN** (pulsing orange = generating → green = done)
+- Window position and size are remembered for next time
 
-チャット画面の隅に置いておけば、会話しながら絵が届くのを眺めていられるよ。
+Park it in the corner of your chat and watch the pictures arrive while you talk.
 
-## 🔧 トラブルシュート
+## 🔧 Troubleshooting
 
-| 症状 | チェックすること |
+| Symptom | Check |
 |---|---|
-| 受信しない | ぷろんぷたんが起動してる？／Tampermonkeyのスクリプトは有効？／AIの出力にマーカー（🔴🟥）はある？ |
-| 生成されない | SD WebUI / Forge は `--api` 付きで起動してる？／設定のURLは合ってる？ |
-| 「同じプロンプトだからスキップ！」と出る | 同じ内容の連続自動生成を防ぐ仕様だよ。生成ボタンを押せば何度でも作れる（シードは毎回ランダム） |
-| もっと詳しく | [📖 マニュアル](MANUAL_JA.md) へ |
+| Nothing is received | Is Puromputan running? Is the Tampermonkey script enabled? Does the AI's reply contain the markers (🔴🟥)? |
+| Nothing generates | Is SD WebUI / Forge running with `--api`? Is the URL in Settings correct? |
+| "Same prompt — skipped" appears | That's the duplicate guard. Press the Generate button to remake as many times as you like (the seed is random every time) |
+| More details | See the [📖 Manual](MANUAL_EN.md) |
 
 ## 🙏 Acknowledgments
 
-- [Lucide](https://lucide.dev/) — アイコン（ISC License）
-- [CustomTkinter](https://customtkinter.tomschimansky.com/) — GUIフレームワーク
-- [Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) / [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) — 画像生成
-- [Tampermonkey](https://www.tampermonkey.net/)（通称：もんきち） — ブラウザ連携
+- [Lucide](https://lucide.dev/) — icons (ISC License)
+- [CustomTkinter](https://customtkinter.tomschimansky.com/) — GUI framework
+- [Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) / [Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge) — image generation
+- [Tampermonkey](https://www.tampermonkey.net/) — browser integration
 
-## 📜 利用規約・免責事項
+## 📜 Terms of Use & Disclaimer
 
-- 本ソフトウェアの著作権は作者に帰属します（All rights reserved）。
-- 個人で使う・手元で改造して楽しむのは自由です。**無断での再配布・改変版の公開はご遠慮ください**（やりたい場合は声をかけてね）。
-- 本ソフトウェアは自己責任でご利用ください。利用により生じたいかなる損害についても、作者は責任を負いません。
-- 生成画像の取り扱いは、使用するモデルのライセンスおよび各チャットサービスの利用規約に従ってください。
-- 公序良俗に反する用途での利用はご遠慮ください。
+- The copyright of this software belongs to the author (All rights reserved).
+- Personal use and tinkering on your own machine are welcome. **Please do not redistribute it or publish modified versions without permission** (if you'd like to, just ask!).
+- Use at your own risk. The author assumes no responsibility for any damages arising from its use.
+- Handle generated images in accordance with the license of the model you use and the terms of each chat service.
+- Please refrain from uses that violate public order and morals.
 
 ---
 
 <div align="center">
 
-🎀 **ぷろんぷたん** — チャットのとなりに、小さなアトリエを。
+🎀 **Puromputan** — a little atelier beside your chat.
 
 </div>
