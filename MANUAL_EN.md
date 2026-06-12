@@ -15,7 +15,7 @@ It's simple: have the AI write its prompt in the special format (the "📋 Rules
 
 ## Starting the App
 
-1. Double-click `起動する.bat`
+1. Double-click `start.bat`
 2. Wait for the port indicator to show `🎀 Port 787x`
 3. Make sure Stable Diffusion (Forge) is also running. The dot turns 🟢 when connected.
 

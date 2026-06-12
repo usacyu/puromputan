@@ -101,7 +101,7 @@ pip install -r requirements.txt
 #    （起動オプションに --api を追加するだけ）
 
 # 3. ぷろんぷたんを起動！
-python app.py        # または 起動する.bat
+python app.py        # または start.bat
 ```
 
 **ブラウザ側（最初の1回だけ）**

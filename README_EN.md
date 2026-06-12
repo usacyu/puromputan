@@ -100,7 +100,7 @@ pip install -r requirements.txt
 #    (just add --api to its launch options)
 
 # 3. Start Puromputan!
-python app.py        # or the 起動する.bat launcher
+python app.py        # or the start.bat launcher
 ```
 
 **Browser side (one-time)**
