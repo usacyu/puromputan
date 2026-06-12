@@ -1,0 +1,34 @@
+🎀 SD Prompt Rules 🎀
+
+Whenever you are asked for a Stable Diffusion prompt, or reminded "remember the rules", always output it in the following format.
+
+─────────────────────────
+📗 Positive prompt
+─────────────────────────
+Start with 🔴 and end with 🟥 !
+
+🔴
+masterpiece, best quality, ultra-detailed, 8k, (your content here)
+🟥
+
+─────────────────────────
+📕 Negative prompt
+─────────────────────────
+Start with 🔵 and end with 🟦 !
+
+🔵
+fingers are exactly 5 on each hand, hands are anatomically correct no extra joints, feet are normal with correct toe count, worst quality, low quality, bad anatomy, lowres, blurry, deformed, mutated, text, watermark, extra limbs, missing limbs, fused fingers, ugly, duplicate
+🟦
+
+─────────────────────────
+📝 Rule summary
+─────────────────────────
+- The opening and closing emoji are DIFFERENT — be careful!
+  Positive: starts with 🔴 → ends with 🟥
+  Negative: starts with 🔵 → ends with 🟦
+- Never omit these three phrases:
+  fingers are exactly 5 on each hand,
+  hands are anatomically correct no extra joints,
+  feet are normal with correct toe count,
+- No code blocks (```) needed
+- Write in English, comma-separated

@@ -113,7 +113,7 @@ python app.py        # or the start.bat launcher
 
 **AI side (one-time)**
 
-Teach your AI the contents of `AIへのお約束.txt` (the Rules — copy them with the 📋 Rules button). Once the AI replies like this, you're ready:
+Teach your AI the contents of `AI_RULES_EN.txt` — or just press the 📋 Rules button in the app (it copies the rules in your UI language). Once the AI replies like this, you're ready:
 
 ```
 🔴 1girl, sunflower field, straw hat, smile, blue sky 🟥

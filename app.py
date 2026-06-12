@@ -150,6 +150,9 @@ STRINGS = {
         "open_file":        "画像を開く",
         "open_folder":      "フォルダを開く",
         "open_manual":      "マニュアル",
+        "btn_rules":        "お約束",
+        "st_rules_copied":  "お約束をコピーしたよ！",
+        "st_rules_missing": "❌ {f} が見つからないよ",
         "spice_lbl":        "✨ ポジスパイス",
         "spice_none":       "なし",
         "neg_boost_btn":    "ネガ補強（手・指・足）",
@@ -249,6 +252,9 @@ STRINGS = {
         "open_file":        "Open Image",
         "open_folder":      "Open Folder",
         "open_manual":      "Manual",
+        "btn_rules":        "Rules",
+        "st_rules_copied":  "Rules copied to clipboard!",
+        "st_rules_missing": "❌ {f} not found",
         "spice_lbl":        "✨ Pos Spice",
         "spice_none":       "None",
         "neg_boost_btn":    "Neg Boost (hands/fingers/feet)",
@@ -1080,11 +1086,12 @@ class App(ctk.CTk):
         self._reg("open_folder", lambda: self.open_folder_btn.configure(text=self.S("open_folder")))
         self.manual_btn_w = _botbtn("book-open", "open_manual", self._open_manual)
         self._reg("open_manual", lambda: self.manual_btn_w.configure(text=self.S("open_manual")))
-        self.rules_btn = ctk.CTkButton(bot, text="お約束", image=ICON("scroll-text","white",16),
+        self.rules_btn = ctk.CTkButton(bot, text=self.S("btn_rules"), image=ICON("scroll-text","white",16),
             compound="left", height=34, font=("Yu Gothic UI",11,"bold"),
             fg_color=C_PINK, hover_color=C_PINK_H, text_color="white", corner_radius=10,
             command=self._copy_rules)
         self.rules_btn.pack(side="left", expand=True, fill="x", padx=3)
+        self._reg("btn_rules", lambda: self.rules_btn.configure(text=self.S("btn_rules")))
 
 
     # ── 生成履歴カルーセル ─────────────────────────────
@@ -2179,22 +2186,28 @@ class App(ctk.CTk):
         self.after(3000, lambda: self.save_result_lbl.configure(text=""))
 
     def _copy_rules(self):
-        """AIへのお約束.txt をクリップボードにコピー"""
+        """お約束（AIへのプロンプト規則）をクリップボードにコピー。UIの言語に合わせたファイルを使う"""
         try:
             base = os.path.dirname(os.path.abspath(__file__))
         except NameError:
             base = os.getcwd()
-        path = os.path.join(base, "AIへのお約束.txt")
+        fname = "AIへのお約束.txt" if self.lang == "ja" else "AI_RULES_EN.txt"
+        path = os.path.join(base, fname)
+        if not os.path.exists(path):
+            # 片方しか無い環境でも動くようにもう一方へフォールバック
+            alt = "AI_RULES_EN.txt" if fname != "AI_RULES_EN.txt" else "AIへのお約束.txt"
+            if os.path.exists(os.path.join(base, alt)):
+                fname, path = alt, os.path.join(base, alt)
         try:
             with open(path, "r", encoding="utf-8") as f:
                 text = f.read()
             self.clipboard_clear()
             self.clipboard_append(text)
             orig = self.status_lbl.cget("text")
-            self._set_status("お約束をコピーしたよ！", C_ACCENT)
+            self._set_status(self.S("st_rules_copied"), C_ACCENT)
             self.after(2500, lambda o=orig: self.status_lbl.configure(text=o))
         except FileNotFoundError:
-            self._set_status("❌ AIへのお約束.txt が見つからないよ", C_RED)
+            self._set_status(self.S("st_rules_missing", f=fname), C_RED)
 
     # ── ミニモード ────────────────────────────────────
     def _toggle_mini(self):

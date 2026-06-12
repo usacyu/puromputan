@@ -46,7 +46,7 @@ Connects the Forge page and Puromputan in both directions. After installing, but
 ## AI Prompt Rules
 
 Ask the AI to format prompts using special markers.  
-Press the **「📋 お約束」button** to copy the rules to your clipboard and paste them into the AI chat.
+Press the **📋 Rules button** to copy the rules to your clipboard and paste them into the AI chat (the button copies the English version while the UI is in English).
 
 ### Format
 
@@ -194,7 +194,7 @@ Click the gear icon (top-right) to open.
 | 🖼️ Open Image | Opens the last generated image |
 | 📁 Open Folder | Opens the save folder in Explorer |
 | 📖 Manual | Opens this manual in your browser |
-| 📋 お約束 | Copies the AI prompt rules to clipboard |
+| 📋 Rules | Copies the AI prompt rules to clipboard (matches the UI language) |
 
 ---
 
