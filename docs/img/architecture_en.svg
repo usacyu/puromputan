@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 500" font-family="'Segoe UI','Yu Gothic UI','Noto Sans',sans-serif">
+  <!-- background -->
+  <rect x="0" y="0" width="940" height="500" rx="18" fill="#fbf7fb"/>
+  <rect x="0" y="0" width="940" height="500" rx="18" fill="none" stroke="#ece2f0" stroke-width="2"/>
+
+  <!-- title -->
+  <text x="470" y="40" text-anchor="middle" font-size="19" font-weight="bold" fill="#e85d9a">🎀 How Puromputan works</text>
+  <text x="470" y="62" text-anchor="middle" font-size="12" fill="#8a7f92">Auto-catch prompts from your AI chat → generate instantly with Stable Diffusion / Forge</text>
+
+  <!-- 1: AI chat -->
+  <rect x="36" y="100" width="204" height="186" rx="14" fill="#ffffff" stroke="#ece2f0" stroke-width="2"/>
+  <rect x="36" y="100" width="204" height="38" rx="14" fill="#fde7f1"/>
+  <rect x="36" y="124" width="204" height="14" fill="#fde7f1"/>
+  <text x="138" y="125" text-anchor="middle" font-size="14" font-weight="bold" fill="#d14d8b">💬 AI chat</text>
+  <text x="138" y="158" text-anchor="middle" font-size="10.5" fill="#5c5263">Claude / ChatGPT / Gemini</text>
+  <text x="138" y="174" text-anchor="middle" font-size="10.5" fill="#5c5263">OpenWebUI (local LLMs)…</text>
+  <rect x="50" y="186" width="176" height="86" rx="8" fill="#fbf7fb" stroke="#ece2f0"/>
+  <text x="138" y="205" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#d14d8b">① Teach the AI the Rules</text>
+  <text x="138" y="220" text-anchor="middle" font-size="9.5" fill="#8a7f92">(copy them with the 📋 Rules</text>
+  <text x="138" y="233" text-anchor="middle" font-size="9.5" fill="#8a7f92">button and paste into chat)</text>
+  <text x="138" y="251" text-anchor="middle" font-size="10" fill="#9b6bd6">② AI replies with markers</text>
+  <text x="138" y="266" text-anchor="middle" font-size="10.5" fill="#5c5263">🔴 pos 🟥 ／ 🔵 neg 🟦</text>
+
+  <!-- arrow to 2 -->
+  <path d="M 240 185 L 348 185" stroke="#e85d9a" stroke-width="3" fill="none" marker-end="url(#ar)"/>
+  <text x="295" y="166" text-anchor="middle" font-size="11" fill="#d14d8b" font-weight="bold">③ userscript</text>
+  <text x="295" y="205" text-anchor="middle" font-size="9.5" fill="#8a7f92">Tampermonkey detects</text>
+  <text x="295" y="219" text-anchor="middle" font-size="9.5" fill="#8a7f92">and sends automatically</text>
+
+  <!-- 2: Puromputan -->
+  <rect x="352" y="92" width="246" height="194" rx="16" fill="#ffffff" stroke="#e85d9a" stroke-width="2.5"/>
+  <rect x="352" y="92" width="246" height="42" rx="16" fill="#e85d9a"/>
+  <rect x="352" y="118" width="246" height="16" fill="#e85d9a"/>
+  <text x="475" y="119" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">🎀 Puromputan</text>
+  <text x="475" y="152" text-anchor="middle" font-size="10.5" fill="#9b6bd6">listens on localhost : 7871–7880</text>
+  <g font-size="10.5" fill="#5c5263">
+    <text x="368" y="176">✨ Auto / Manual mode, direct input</text>
+    <text x="368" y="196">🌶 Pos spices (1–9) &amp; neg boost</text>
+    <text x="368" y="216">⚡ Quality presets (Fast–HQ)</text>
+    <text x="368" y="236">🖼 Preview, history, mini mode</text>
+  </g>
+  <text x="475" y="262" text-anchor="middle" font-size="9.5" fill="#b9afc2">Python + CustomTkinter</text>
+
+  <!-- arrows to 3 -->
+  <path d="M 598 160 L 692 160" stroke="#9b6bd6" stroke-width="3" fill="none" marker-end="url(#ar2)"/>
+  <text x="645" y="146" text-anchor="middle" font-size="10" fill="#9b6bd6" font-weight="bold">txt2img API</text>
+  <path d="M 692 210 L 598 210" stroke="#67b26f" stroke-width="3" fill="none" marker-end="url(#ar3)"/>
+  <text x="645" y="231" text-anchor="middle" font-size="10" fill="#4f9457" font-weight="bold">PNG comes back</text>
+
+  <!-- 3: SD/Forge -->
+  <rect x="696" y="100" width="208" height="186" rx="14" fill="#ffffff" stroke="#ece2f0" stroke-width="2"/>
+  <rect x="696" y="100" width="208" height="38" rx="14" fill="#ede7f8"/>
+  <rect x="696" y="124" width="208" height="14" fill="#ede7f8"/>
+  <text x="800" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#7a52b5">🖥 SD WebUI / Forge</text>
+  <text x="800" y="160" text-anchor="middle" font-size="10.5" fill="#5c5263">your local image generator</text>
+  <text x="800" y="176" text-anchor="middle" font-size="10.5" fill="#5c5263">(just launch with --api)</text>
+  <rect x="710" y="196" width="180" height="76" rx="8" fill="#fbf7fb" stroke="#ece2f0"/>
+  <text x="800" y="216" text-anchor="middle" font-size="10" font-weight="bold" fill="#9b6bd6">Bonus link (optional)</text>
+  <text x="800" y="233" text-anchor="middle" font-size="9.5" fill="#8a7f92">forge_sync.user.js syncs</text>
+  <text x="800" y="247" text-anchor="middle" font-size="9.5" fill="#8a7f92">settings &amp; auto-fills prompts</text>
+  <text x="800" y="261" text-anchor="middle" font-size="9.5" fill="#8a7f92">into the Forge UI</text>
+
+  <!-- bottom: save & enjoy -->
+  <path d="M 475 286 L 475 336" stroke="#e85d9a" stroke-width="3" fill="none" marker-end="url(#ar)"/>
+  <text x="497" y="316" text-anchor="start" font-size="10" fill="#d14d8b" font-weight="bold">⑤ a picture arrives!</text>
+  <rect x="240" y="340" width="460" height="116" rx="14" fill="#ffffff" stroke="#ece2f0" stroke-width="2"/>
+  <text x="470" y="368" text-anchor="middle" font-size="13" font-weight="bold" fill="#d14d8b">📁 Auto-save &amp; enjoy</text>
+  <g font-size="11" fill="#5c5263">
+    <text x="470" y="394" text-anchor="middle">Every picture is saved to your folder and appears in the history carousel</text>
+    <text x="470" y="414" text-anchor="middle">In mini mode, an always-on-top polaroid window lets you</text>
+    <text x="470" y="430" text-anchor="middle">watch the pictures arrive while you chat 🐱</text>
+  </g>
+
+  <!-- arrow markers -->
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#e85d9a"/>
+    </marker>
+    <marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#9b6bd6"/>
+    </marker>
+    <marker id="ar3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#67b26f"/>
+    </marker>
+  </defs>
+</svg>

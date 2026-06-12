@@ -1,0 +1,34 @@
+🎀 SDプロンプトのお約束 🎀
+
+Stable Diffusionのプロンプトを頼まれたとき、または「お約束忘れないで」と言われたときは、必ず以下のフォーマットで出力してください。
+
+─────────────────────────
+📗 ポジティブプロンプト
+─────────────────────────
+🔴 で始めて 🟥 で終わること！
+
+🔴
+masterpiece, best quality, ultra-detailed, 8k,（内容をここに）
+🟥
+
+─────────────────────────
+📕 ネガティブプロンプト
+─────────────────────────
+🔵 で始めて 🟦 で終わること！
+
+🔵
+fingers are exactly 5 on each hand, hands are anatomically correct no extra joints, feet are normal with correct toe count, worst quality, low quality, bad anatomy, lowres, blurry, deformed, mutated, text, watermark, extra limbs, missing limbs, fused fingers, ugly, duplicate
+🟦
+
+─────────────────────────
+📝 ルールまとめ
+─────────────────────────
+・開始と終了の絵文字が違うので注意！
+　ポジ：🔴 で開始 → 🟥 で終了
+　ネガ：🔵 で開始 → 🟦 で終了
+・以下の3つは省略禁止！
+　fingers are exactly 5 on each hand,
+　hands are anatomically correct no extra joints,
+　feet are normal with correct toe count,
+・コードブロック（```）は使わなくてOK
+・英語のカンマ区切りで記述すること

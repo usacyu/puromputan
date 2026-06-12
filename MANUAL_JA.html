@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎀 ぷろんぷたん マニュアル</title>
+<style>
+  :root {
+    --bg: #f4eff9;
+    --card: #ffffff;
+    --border: #dfd0f0;
+    --accent: #8b2fc9;
+    --accent-l: #c8a8e8;
+    --lavender: #ead5f5;
+    --text: #1e1e1e;
+    --text-s: #666;
+    --green: #1e8449;
+    --red: #c0392b;
+    --orange: #d35400;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 0 0 60px;
+  }
+  header {
+    background: linear-gradient(135deg, #c8a8e8, #8b2fc9);
+    color: white;
+    padding: 40px 40px 30px;
+    text-align: center;
+  }
+  header h1 { font-size: 2rem; margin-bottom: 8px; }
+  header p  { opacity: .85; font-size: 1rem; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  h2 {
+    font-size: 1.25rem;
+    color: var(--accent);
+    margin: 40px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent-l);
+  }
+  h3 { font-size: 1.05rem; color: var(--text); margin: 20px 0 8px; }
+
+  p { margin-bottom: 10px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: .95rem;
+  }
+  th {
+    background: var(--lavender);
+    color: var(--accent);
+    padding: 8px 14px;
+    text-align: left;
+    font-weight: bold;
+  }
+  td { padding: 8px 14px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+
+  pre {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: .92rem;
+    overflow-x: auto;
+    margin: 12px 0;
+    line-height: 1.6;
+  }
+
+  .tip {
+    background: #e8f7e8;
+    border-left: 4px solid var(--green);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: .95rem;
+  }
+  .warn {
+    background: #fff8e8;
+    border-left: 4px solid var(--orange);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: .95rem;
+  }
+
+  .lamp-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+  .lamp-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: .95rem;
+  }
+  .lamp { font-size: 1.4rem; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--lavender);
+    color: var(--accent);
+    font-weight: bold;
+    font-size: .95rem;
+    margin: 2px;
+  }
+  .pill.on { background: var(--accent); color: white; }
+
+  ul { padding-left: 1.4em; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+
+  .step {
+    counter-increment: step;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .step-num {
+    min-width: 28px; height: 28px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: .9rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--text-s);
+    font-size: .85rem;
+    margin-top: 60px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎀 ぷろんぷたん</h1>
+  <p>AIチャットの“情景”を、その場で絵にする — AIチャット支援ツール</p>
+</header>
+
+<div class="container">
+
+<h2>🌸 ぷろんぷたんってなに？</h2>
+<div class="card">
+  <p><strong>AIとのチャットで描かれた「情景」を、自動でイラストにして見せてくれる “AIチャットのお供”</strong> だよ。会話やロールプレイのなかで「いま、こういう場面」とAIが描写してくれたら、その場面をそのまま Stable Diffusion（Forge）が生成 — 読みながら、絵で見られる。</p>
+  <p>仕組みはシンプル。AIに専用フォーマット（「📋 お約束」）でプロンプトを書いてもらうと、ブラウザの監視スクリプトがそれを検知 → ぷろんぷたんが受け取って SD へ送り、自動で生成。<strong>「AIにプロンプト書いてもらう → コピペ → SDに貼る」の手間はゼロ。</strong>チャットに集中したまま、情景がどんどん絵になっていくよ。</p>
+  <p style="color:var(--text-s); font-size:.9rem;">※ もともとは「AIチャットの場面を、画像としても出せたらいいな」という発想から生まれた “AIチャット支援ツール” だよ。いまは Claude・ChatGPT・Gemini・Grok・Copilot などのチャット画面に対応してるよ。</p>
+</div>
+
+<h2>🚀 起動方法</h2>
+<div class="card">
+  <div class="step"><div class="step-num">1</div><div><code>起動する.bat</code> をダブルクリック</div></div>
+  <div class="step"><div class="step-num">2</div><div>右上のポートが <strong>🎀 ポート 787x</strong> に変わるのを確認</div></div>
+  <div class="step"><div class="step-num">3</div><div>Stable Diffusion（Forge）も起動しておく。左上のランプが 🟢 になれば接続OK！</div></div>
+</div>
+
+<h2>🔧 Tampermonkey スクリプトの準備</h2>
+<div class="card">
+  <h3>sd_monitor.user.js（必須）</h3>
+  <p>AIチャットページを監視して、プロンプトを自動検知・送信するスクリプト。</p>
+  <p><strong>対応サービス：</strong>Claude / ChatGPT / Gemini / Grok / Copilot</p>
+  <div class="tip">Tampermonkey 管理画面 → 「新規スクリプト」→ <code>sd_monitor.user.js</code> の内容を貼り付けて保存</div>
+  <div class="warn">💡 <strong>OpenWebUI などローカルのチャットUIで使うとき</strong>は、スクリプト先頭の <code>@match</code> の並びに自分のURL（例：<code>// @match http://localhost:8080/*</code>）を1行追加してね。</div>
+
+  <h3>forge_sync.user.js（任意）</h3>
+  <p>Forge のページとぷろんぷたんを双方向につなぐスクリプト。インストール後、Forge のページ右下にボタンが並ぶよ。</p>
+  <ul>
+    <li><strong>📤 設定を送る</strong> … Forge の生成設定（Steps・CFG・解像度・サンプラー）をワンクリックで同期</li>
+    <li><strong>📥 取り込む</strong> … ぷろんぷたんが受信したポジ・ネガを Forge のプロンプト欄にワンクリックで入力</li>
+    <li><strong>🪄 自動入力</strong> … トグルONで、新しいプロンプトが届くたび Forge の欄へ自動反映（初期値ON）</li>
+  </ul>
+</div>
+
+<h2>📋 AIへのお約束</h2>
+<div class="card">
+  <p>AIにプロンプトを書いてもらうとき、専用フォーマットを使う必要があるよ。<br>
+  <strong>「📋 お約束」ボタン</strong>を押すとクリップボードにコピーされるから、そのままAIに貼り付けてね！</p>
+
+  <h3>プロンプトのフォーマット</h3>
+  <pre>🔴
+masterpiece, best quality, 1girl, ...
+🟥
+
+🔵
+worst quality, low quality, bad anatomy, ...
+🟦</pre>
+  <ul>
+    <li>ポジティブ：🔴 で始めて 🟥 で終わる</li>
+    <li>ネガティブ：🔵 で始めて 🟦 で終わる</li>
+  </ul>
+</div>
+
+<h2>🖥️ 画面の見方</h2>
+<div class="card">
+  <img src="docs/img/screenshot_main.png" alt="ぷろんぷたんのメイン画面" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:4px 0 14px;">
+
+  <h3>ステータスカード（右上）</h3>
+  <table>
+    <tr><th>表示</th><th>意味</th></tr>
+    <tr><td>✓ SD接続中（緑）</td><td>SDに接続できてるよ</td></tr>
+    <tr><td>○ SD未接続（赤）</td><td>SDが見つからない（起動・URLを確認してね）</td></tr>
+    <tr><td>⚡ 自動</td><td>プロンプト受信したら即生成</td></tr>
+    <tr><td>👀 確認</td><td>手動でボタンを押して生成</td></tr>
+    <tr><td>✨ 生成中（明滅）</td><td>いま絵を作ってる合図。チップがふわふわ光るよ</td></tr>
+    <tr><td>タイムスタンプ</td><td>P=ポジ受信時刻　N=ネガ受信時刻　✨=生成完了時刻</td></tr>
+  </table>
+
+  <h3>ポジ・ネガボックスのピル</h3>
+  <table>
+    <tr><th>ピル</th><th>意味</th></tr>
+    <tr><td>○ 待機中（灰）</td><td>まだ何もない</td></tr>
+    <tr><td>✓ 受信完了（緑/赤）</td><td>プロンプトが届いた（届いた瞬間につくよ）</td></tr>
+    <tr><td>✓ 手入力</td><td>自分で入力・編集した内容が入ってる</td></tr>
+    <tr><td>✓ 生成済み（紫）</td><td>この内容はもう絵になった（新しく届くとまた受信完了に戻るよ）</td></tr>
+  </table>
+
+  <h3>プレビューと履歴</h3>
+  <ul>
+    <li>プレビューの大きさは <strong>S / M / L</strong> で切替。<strong>Hide</strong> で絵・履歴・ファイル名をまとめて非表示（とっさのプライバシー用🙈）</li>
+    <li>下の「最近作った絵」は履歴カルーセル。<strong>‹ ›</strong> で1枚ずつ送れて、クリックで大きく表示</li>
+    <li>生成が終わると<strong>ピンクの選択枠が自動で最新の絵に移動</strong>するよ</li>
+  </ul>
+</div>
+
+<h2>✍️ 手動入力での生成</h2>
+<div class="card">
+  <p>ポジ・ネガ欄は<strong>直接入力もOK</strong>！</p>
+  <ul>
+    <li>欄に書く・貼り付ける → 生成ボタンが点灯 → 押せば生成</li>
+    <li><strong>受信したプロンプトの「ちょい直し」もそのまま反映</strong>されるよ（直すとピルが「手入力」に変わる）</li>
+  </ul>
+  <div class="tip">スパイスの紫色の追記表示が残っているときは、欄を触ると自動で消えてから編集モードになるよ（スパイスの二重掛け防止。スパイスは生成時にちゃんと合成されるから安心してね）。</div>
+</div>
+
+<h2>✨ ポジスパイス</h2>
+<div class="card">
+  <p>生成時にポジティブプロンプトへ自動で追記する「おまけ」設定だよ。</p>
+  <div class="step"><div class="step-num">1</div><div>⚙️（歯車）→ スパイス内容欄（1〜9）に好きなフレーズを入力して保存</div></div>
+  <div class="step"><div class="step-num">2</div><div>メイン画面のピル（1〜9）を押してON（紫色）にすると追記される</div></div>
+  <div style="margin-top:10px">
+    <span class="pill on">1</span>
+    <span class="pill">2</span>
+    <span class="pill on">3</span>
+    <span class="pill">4</span>
+    <span class="pill">5</span>
+    <span class="pill on">6</span>
+    <span class="pill">7</span>
+    <span class="pill">8</span>
+    <span class="pill">9</span>
+    <span style="margin-left:10px;font-size:.9rem;color:var(--text-s)">← 紫がON、灰色がOFF</span>
+  </div>
+  <div class="tip" style="margin-top:14px">複数選んでもOK！全部カンマ区切りで追加されるよ。</div>
+</div>
+
+<h2>💪 ネガ補強</h2>
+<div class="card">
+  <p>手・指・足の解剖学的破綻をネガに自動追記するスイッチ。</p>
+  <p>右パネルの「💪 ネガ補強（手・指・足）」のチェックボックスをONにするだけ。</p>
+  <p>内容は ⚙️ 設定から自由に編集できるよ。</p>
+</div>
+
+<h2>⚡ 生成モード</h2>
+<div class="card">
+  <table>
+    <tr><th>モード</th><th>動作</th></tr>
+    <tr><td>⚡ 自動</td><td>ポジ＋ネガが届いたら即生成。ポジだけのときは5秒待ってから生成。</td></tr>
+    <tr><td>👀 確認</td><td>プロンプトが届いてもボタンを押すまで生成しない。</td></tr>
+  </table>
+  <div class="tip">生成中に新しいプロンプトが届いた場合は、自動モードなら生成完了後に自動で次を生成するよ！</div>
+</div>
+
+<h2>📌 ミニモード</h2>
+<div class="card">
+  <p>右上の <strong>Mini</strong> ボタンで、ポラロイド風の小窓に変身！チャットの隅に置いて、絵が届くのを眺めながら会話できるよ。</p>
+  <div style="text-align:center;margin:12px 0;">
+    <img src="docs/img/screenshot_mini.png" alt="ミニモード（ポラロイド風）" style="width:280px;border-radius:12px;border:1px solid var(--border);">
+  </div>
+  <ul>
+    <li>常に最前面・絵が主役（タイトルバーやパネルは全部隠れる）</li>
+    <li>窓のサイズを変えると絵もぴったり追従（位置とサイズは記憶されるよ）</li>
+    <li>戻るときは右下の ↗ ボタン</li>
+  </ul>
+  <h3>ミニのランプの見方</h3>
+  <table>
+    <tr><th>ランプ</th><th>意味</th></tr>
+    <tr><td>P / N がペカペカッと点滅→点灯</td><td>新しいプロンプトが届いた！</td></tr>
+    <tr><td>GEN が橙色でふわふわ明滅</td><td>いま生成中</td></tr>
+    <tr><td>GEN が緑のチェック</td><td>生成完了</td></tr>
+    <tr><td>P / N が薄いチェックに戻る</td><td>この受信ぶんは絵にできたよ、の合図（次が届くとまた点灯）</td></tr>
+  </table>
+  <div class="warn">ミニ中は自動生成モードに固定されるよ。</div>
+</div>
+
+<h2>💎 クオリティプリセット</h2>
+<div class="card">
+  <table>
+    <tr><th>プリセット</th><th>Steps</th><th>サンプラー</th></tr>
+    <tr><td>⚡ 爆速</td><td>12</td><td>Euler a</td></tr>
+    <tr><td>✨ 通常</td><td>28</td><td>DPM++ 2M Karras</td></tr>
+    <tr><td>💎 高品質</td><td>45</td><td>DPM++ 2M Karras</td></tr>
+    <tr><td>🔄 Forge同期値</td><td colspan="2">Forgeから取得した値</td></tr>
+  </table>
+</div>
+
+<h2>⚙️ 設定</h2>
+<div class="card">
+  <p>右上の歯車マークから開けるよ。</p>
+  <table>
+    <tr><th>項目</th><th>説明</th></tr>
+    <tr><td>SD接続設定</td><td>Stable Diffusion の URL（デフォルト: http://127.0.0.1:7860）</td></tr>
+    <tr><td>Forge設定</td><td>Forgeから設定を取り込むボタン</td></tr>
+    <tr><td>保存先フォルダ</td><td>生成画像の保存場所</td></tr>
+    <tr><td>CFG・横px・縦px</td><td>生成パラメーター</td></tr>
+    <tr><td>検知マーカー</td><td>プロンプトを囲む絵文字（変えたらお約束も更新してね）</td></tr>
+    <tr><td>スパイス内容 1〜9</td><td>各スパイスのテキスト</td></tr>
+    <tr><td>ネガ補強テンプレート</td><td>補強で追記されるネガの内容</td></tr>
+  </table>
+</div>
+
+<h2>🔘 ボタンまとめ</h2>
+<div class="card">
+  <table>
+    <tr><th>ボタン</th><th>機能</th></tr>
+    <tr><td>🖼️ 画像を開く</td><td>最後に生成した画像をビューアーで開く</td></tr>
+    <tr><td>📁 フォルダを開く</td><td>保存先フォルダをエクスプローラーで開く</td></tr>
+    <tr><td>📖 マニュアル</td><td>このマニュアルをブラウザで開く</td></tr>
+    <tr><td>📋 お約束</td><td>AIへのお約束をクリップボードにコピー</td></tr>
+  </table>
+</div>
+
+<h2>❓ よくある質問</h2>
+<div class="card">
+  <h3>プロンプトが届かない</h3>
+  <p>sd_monitor.user.js がインストールされているか確認。ぷろんぷたんが起動しているか確認。</p>
+
+  <h3>SDに繋がらない</h3>
+  <p>Stable Diffusion（Forge）が起動しているか確認。設定のURLが正しいか確認。</p>
+
+  <h3>同じプロンプトを送っても生成されない</h3>
+  <p>仕様です。同じ内容の連続自動生成を防ぐため、オレンジ色で「同じプロンプトだからスキップ！（ボタンで作れるよ）」と案内が出ます。<strong>生成ボタンを押せば何度でも作れます</strong>（シードは毎回ランダムだから違う絵になるよ）。</p>
+
+  <h3>短い文章が誤検知される</h3>
+  <p>10文字未満のプロンプトは自動でスキップされます。</p>
+</div>
+
+</div>
+
+<footer>
+  <p>🎀 ぷろんぷたん</p>
+</footer>
+
+</body>
+</html>

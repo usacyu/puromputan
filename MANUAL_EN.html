@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎀 Puromputan Manual</title>
+<style>
+  :root {
+    --bg: #f4eff9; --card: #ffffff; --border: #dfd0f0;
+    --accent: #8b2fc9; --accent-l: #c8a8e8; --lavender: #ead5f5;
+    --text: #1e1e1e; --text-s: #666;
+    --green: #1e8449; --red: #c0392b; --orange: #d35400;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; padding: 0 0 60px; }
+  header { background: linear-gradient(135deg, #c8a8e8, #8b2fc9); color: white; padding: 40px 40px 30px; text-align: center; }
+  header h1 { font-size: 2rem; margin-bottom: 8px; }
+  header p  { opacity: .85; font-size: 1rem; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  h2 { font-size: 1.25rem; color: var(--accent); margin: 40px 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--accent-l); }
+  h3 { font-size: 1.05rem; margin: 20px 0 8px; }
+  p  { margin-bottom: 10px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95rem; }
+  th { background: var(--lavender); color: var(--accent); padding: 8px 14px; text-align: left; font-weight: bold; }
+  td { padding: 8px 14px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  pre { background: #2d2d2d; color: #f8f8f2; border-radius: 10px; padding: 18px 20px; font-size: .92rem; overflow-x: auto; margin: 12px 0; line-height: 1.6; }
+  .tip  { background: #e8f7e8; border-left: 4px solid var(--green);  padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: .95rem; }
+  .lamp-row { display: flex; gap: 24px; flex-wrap: wrap; margin: 12px 0; }
+  .lamp-item { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: .95rem; }
+  .lamp { font-size: 1.4rem; }
+  .pill { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--lavender); color: var(--accent); font-weight: bold; font-size: .95rem; margin: 2px; }
+  .pill.on { background: var(--accent); color: white; }
+  ul { padding-left: 1.4em; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+  .step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; }
+  .step-num { min-width: 28px; height: 28px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: .9rem; flex-shrink: 0; margin-top: 2px; }
+  footer { text-align: center; color: var(--text-s); font-size: .85rem; margin-top: 60px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎀 Puromputan</h1>
+  <p>Turn your AI chat's scenes into pictures — an AI-chat companion</p>
+</header>
+
+<div class="container">
+
+<h2>🌸 What is Puromputan?</h2>
+<div class="card">
+  <p><strong>A companion for your AI chats that turns the scenes you talk about into illustrations, automatically.</strong> When the AI describes "the scene right now" during a conversation or roleplay, Puromputan generates that scene with Stable Diffusion (Forge) — so you can read along and see it.</p>
+  <p>It's simple: have the AI write its prompt in the special format (the "📋 Rules"), and a browser userscript detects it → Puromputan receives it and sends it to SD for automatic generation. <strong>No "ask the AI for a prompt → copy → paste into SD" anymore.</strong> Stay in the chat, and the scenes keep turning into pictures.</p>
+  <p style="color:var(--text-s); font-size:.9rem;">※ It started from the idea "what if I could also output the scenes of my AI chat as images" — an AI-chat support tool. Currently works with Claude, ChatGPT, Gemini, Grok, Copilot and more.</p>
+</div>
+
+<h2>🚀 Starting the App</h2>
+<div class="card">
+  <div class="step"><div class="step-num">1</div><div>Double-click <code>Kido-suru.bat</code> (the startup batch file)</div></div>
+  <div class="step"><div class="step-num">2</div><div>Wait for the port indicator to show <strong>🎀 Port 787x</strong></div></div>
+  <div class="step"><div class="step-num">3</div><div>Make sure Stable Diffusion (Forge) is running. The dot turns 🟢 when connected.</div></div>
+</div>
+
+<h2>🔧 Tampermonkey Scripts</h2>
+<div class="card">
+  <h3>sd_monitor.user.js (required)</h3>
+  <p>Monitors AI chat pages and auto-detects/sends prompts.</p>
+  <p><strong>Supported:</strong> Claude / ChatGPT / Gemini / Grok / Copilot</p>
+  <div class="tip">Tampermonkey → New Script → Paste <code>sd_monitor.user.js</code> content → Save</div>
+  <div class="tip">💡 <strong>Using a local chat UI like OpenWebUI?</strong> Add your own URL to the <code>@match</code> lines at the top of <code>sd_monitor.user.js</code> (e.g. <code>// @match http://localhost:8080/*</code>).</div>
+
+  <h3>forge_sync.user.js (optional)</h3>
+  <p>Connects the Forge page and Puromputan in both directions. After installing, buttons appear at the bottom-right of the Forge page.</p>
+  <ul>
+    <li><strong>📤 Send settings</strong> … Sync Forge generation settings (Steps, CFG, resolution, sampler) with one click</li>
+    <li><strong>📥 Pull prompt</strong> … Fill Forge's prompt fields with the received positive/negative</li>
+    <li><strong>🪄 Auto-fill</strong> … Toggle ON to auto-fill Forge whenever a new prompt arrives (default ON)</li>
+  </ul>
+</div>
+
+<h2>📋 AI Prompt Rules</h2>
+<div class="card">
+  <p>Ask the AI to use special markers when writing prompts.<br>
+  Press the <strong>📋 Rules button</strong> to copy the rules and paste them into your AI chat.</p>
+  <h3>Format</h3>
+  <pre>🔴
+masterpiece, best quality, 1girl, ...
+🟥
+
+🔵
+worst quality, low quality, bad anatomy, ...
+🟦</pre>
+  <ul>
+    <li>Positive: starts with 🔴, ends with 🟥</li>
+    <li>Negative: starts with 🔵, ends with 🟦</li>
+  </ul>
+</div>
+
+<h2>🖥️ Interface Overview</h2>
+<div class="card">
+  <img src="docs/img/screenshot_main.png" alt="Puromputan main window" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:4px 0 14px;">
+
+  <h3>Status Card (top-right)</h3>
+  <table>
+    <tr><th>Display</th><th>Meaning</th></tr>
+    <tr><td>✓ SD connected (green)</td><td>Connected to SD</td></tr>
+    <tr><td>○ SD offline (red)</td><td>SD not found (check it's running / URL)</td></tr>
+    <tr><td>⚡ Auto</td><td>Generates immediately on receipt</td></tr>
+    <tr><td>👀 Manual</td><td>Waits for button press</td></tr>
+    <tr><td>✨ Generating (pulsing)</td><td>A picture is being made — the chip glows softly</td></tr>
+    <tr><td>Timestamps</td><td>P = pos received　N = neg received　✨ = last generated</td></tr>
+  </table>
+
+  <h3>Pos / Neg Pills</h3>
+  <table>
+    <tr><th>Pill</th><th>Meaning</th></tr>
+    <tr><td>○ Waiting (gray)</td><td>Nothing yet</td></tr>
+    <tr><td>✓ Received (green/red)</td><td>A prompt arrived (appears the moment it arrives)</td></tr>
+    <tr><td>✓ Manual</td><td>You typed or edited the content yourself</td></tr>
+    <tr><td>✓ Generated (purple)</td><td>This content has been turned into a picture (a new arrival resets it to Received)</td></tr>
+  </table>
+
+  <h3>Preview &amp; History</h3>
+  <ul>
+    <li>Switch preview size with <strong>S / M / L</strong>. Press <strong>Hide</strong> to hide the picture, history and filename all at once (quick privacy 🙈)</li>
+    <li>The strip at the bottom is the history carousel. Use <strong>‹ ›</strong> to step one thumbnail at a time; click one to view it large</li>
+    <li>When generation finishes, <strong>the pink selection frame automatically moves to the newest picture</strong></li>
+  </ul>
+</div>
+
+<h2>✍️ Manual Input</h2>
+<div class="card">
+  <p>The pos/neg fields accept <strong>direct input</strong> too!</p>
+  <ul>
+    <li>Type or paste into a field → the Generate button lights up → press it</li>
+    <li><strong>Tweaking a received prompt works as-is</strong> (the pill switches to "Manual" when you edit)</li>
+  </ul>
+  <div class="tip">If the purple spice text is still displayed in the field, it is automatically removed the moment you start editing (prevents double-spicing — spices are still merged in at generation time).</div>
+</div>
+
+<h2>✨ Pos Spice</h2>
+<div class="card">
+  <p>Automatically appends extra text to the positive prompt at generation time.</p>
+  <div class="step"><div class="step-num">1</div><div>Open ⚙️ Settings → Fill in Spice slots 1–9 → Save</div></div>
+  <div class="step"><div class="step-num">2</div><div>Click the numbered pill buttons to toggle ON (purple)</div></div>
+  <div style="margin-top:10px">
+    <span class="pill on">1</span><span class="pill">2</span><span class="pill on">3</span>
+    <span class="pill">4</span><span class="pill">5</span><span class="pill on">6</span>
+    <span class="pill">7</span><span class="pill">8</span><span class="pill">9</span>
+    <span style="margin-left:10px;font-size:.9rem;color:var(--text-s)">← purple = ON, gray = OFF</span>
+  </div>
+  <div class="tip" style="margin-top:14px">Multiple spices can be active — appended with commas.</div>
+</div>
+
+<h2>💪 Neg Boost</h2>
+<div class="card">
+  <p>Appends anatomical correction text (hands, fingers, feet) to the negative prompt. Toggle the checkbox next to "💪 Neg Boost" on the right panel. Edit the template in ⚙️ Settings.</p>
+</div>
+
+<h2>⚡ Generation Modes</h2>
+<div class="card">
+  <table>
+    <tr><th>Mode</th><th>Behavior</th></tr>
+    <tr><td>⚡ Auto</td><td>Generates immediately when pos+neg arrive. Pos-only waits 5s then generates.</td></tr>
+    <tr><td>👀 Manual</td><td>Prompts received but waits for button press.</td></tr>
+  </table>
+  <div class="tip">New prompts received during generation are queued and auto-generated when the current one finishes.</div>
+</div>
+
+<h2>📌 Mini Mode</h2>
+<div class="card">
+  <p>Press the <strong>Mini</strong> button (top-right) to transform into a small polaroid-style window. Park it next to your chat and watch the pictures arrive while you talk.</p>
+  <div style="text-align:center;margin:12px 0;">
+    <img src="docs/img/screenshot_mini.png" alt="Mini mode (polaroid style)" style="width:280px;border-radius:12px;border:1px solid var(--border);">
+  </div>
+  <ul>
+    <li>Always on top, picture first (title bar and panels are hidden)</li>
+    <li>Resize the window and the picture follows (position and size are remembered)</li>
+    <li>Return with the ↗ button at the bottom-right</li>
+  </ul>
+  <h3>Mini Lamps</h3>
+  <table>
+    <tr><th>Lamp</th><th>Meaning</th></tr>
+    <tr><td>P / N blink rapidly, then stay lit</td><td>A new prompt just arrived!</td></tr>
+    <tr><td>GEN pulsing orange</td><td>Generating right now</td></tr>
+    <tr><td>GEN green check</td><td>Generation finished</td></tr>
+    <tr><td>P / N fade to a dim check</td><td>That delivery has been turned into a picture (lights up again on the next arrival)</td></tr>
+  </table>
+  <div class="tip">Mini mode locks generation to Auto.</div>
+</div>
+
+<h2>💎 Quality Presets</h2>
+<div class="card">
+  <table>
+    <tr><th>Preset</th><th>Steps</th><th>Sampler</th></tr>
+    <tr><td>⚡ Fast</td><td>12</td><td>Euler a</td></tr>
+    <tr><td>✨ Normal</td><td>28</td><td>DPM++ 2M Karras</td></tr>
+    <tr><td>💎 High Quality</td><td>45</td><td>DPM++ 2M Karras</td></tr>
+    <tr><td>🔄 Forge Sync</td><td colspan="2">Values from Forge</td></tr>
+  </table>
+</div>
+
+<h2>⚙️ Settings</h2>
+<div class="card">
+  <table>
+    <tr><th>Setting</th><th>Description</th></tr>
+    <tr><td>SD Connection</td><td>Stable Diffusion URL (default: http://127.0.0.1:7860)</td></tr>
+    <tr><td>Forge</td><td>Import settings from Forge</td></tr>
+    <tr><td>Save Folder</td><td>Where generated images are saved</td></tr>
+    <tr><td>CFG / Width / Height</td><td>Generation parameters</td></tr>
+    <tr><td>Detection Markers</td><td>Emoji markers wrapping prompts</td></tr>
+    <tr><td>Spice Content 1–9</td><td>Text for each spice slot</td></tr>
+    <tr><td>Neg Boost Template</td><td>Text appended when boost is enabled</td></tr>
+  </table>
+</div>
+
+<h2>🔘 Button Reference</h2>
+<div class="card">
+  <table>
+    <tr><th>Button</th><th>Function</th></tr>
+    <tr><td>🖼️ Open Image</td><td>Opens the last generated image</td></tr>
+    <tr><td>📁 Open Folder</td><td>Opens the save folder in Explorer</td></tr>
+    <tr><td>📖 Manual</td><td>Opens this manual in your browser</td></tr>
+    <tr><td>📋 Rules</td><td>Copies the AI prompt rules to clipboard</td></tr>
+  </table>
+</div>
+
+<h2>❓ FAQ</h2>
+<div class="card">
+  <h3>Prompts aren't being received</h3>
+  <p>Check that sd_monitor.user.js is installed and Puromputan is running.</p>
+  <h3>SD won't connect</h3>
+  <p>Make sure Stable Diffusion / Forge is running and the URL in Settings is correct.</p>
+  <h3>Same prompt sent again — nothing happens</h3>
+  <p>By design, to avoid duplicate auto-generations. An orange message says "Same prompt — skipped (button remakes it!)". <strong>Press the Generate button to make as many as you like</strong> (the seed is random every time, so each picture is different).</p>
+  <h3>Short text gets detected by mistake</h3>
+  <p>Prompts under 10 characters are automatically skipped.</p>
+</div>
+
+</div>
+<footer><p>🎀 Puromputan</p></footer>
+</body>
+</html>

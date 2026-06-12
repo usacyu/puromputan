@@ -1,0 +1,7 @@
+customtkinter>=5.2.0
+requests>=2.31.0
+Pillow>=10.0.0
+
+# アイコン変換（Lucide SVG → PNG）に使用
+svglib>=1.5.0
+reportlab>=4.0.0
