@@ -3,6 +3,5 @@ config.json
 
 # 実行時に生成されるもの
 __pycache__/
-assets/
 error_log.txt
 *.log

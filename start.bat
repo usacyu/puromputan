@@ -17,6 +17,8 @@ echo Installing libraries...
 pip install -r requirements.txt -q
 echo.
 echo Starting app...
+echo  * Keep this window open! Closing it closes the app too.
+echo  * First-ever launch may pause ~10s while icons download.
 python app.py
 if %errorlevel% neq 0 (
     echo.
