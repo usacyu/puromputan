@@ -5,3 +5,5 @@ config.json
 __pycache__/
 error_log.txt
 *.log
+# ◆始まり = 公開しない（自分用メモ・実験Ver）。物理的にpush不可にする
+◆*
